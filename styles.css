@@ -1,0 +1,28 @@
+body {
+    background-color: #282D3C;
+
+}
+
+.frame {
+    background-color:  #D4E4F7;
+    margin-top: 5%;
+    margin-bottom:25%;
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 600px;
+    height: 550px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.numDisplay {
+    background-color: #282D3C;
+    margin-top: 10%;
+    margin-right: 5px;
+    width: 90%;
+    height: 100px;
+    color: aliceblue;
+    font-size: 40px;
+    text-align: right;
+}

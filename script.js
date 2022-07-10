@@ -31,12 +31,12 @@ deleteOps.onclick = function () {
         numberArray.pop()
         currentNumber = currentNumber.slice(0, currentNumber.length - 1);
         display.textContent = currentNumber;
-    } else if (currentNumber.length == 0){
+    } else if (currentNumber.length == 0) {
         currentNumber = ""
         zeroTotal = "0";
         display.textContent = zeroTotal;
         operationArray.push("+");
-    } else if(display.textContent == currentTotal) {
+    } else if (display.textContent == currentTotal) {
         return;
     }
 }
@@ -184,37 +184,35 @@ const exp = document.querySelector("#exp");
 
 
 const equal = document.querySelector("#equal")
-
-equal.onclick = function operate () {
+equal.onclick = function operate() {
     numberArray.push(Number(currentNumber));
 
-    if (opererandArray.slice(opererandArray.length-1,opererandArray.length)[0] == '+') {
+    if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '+') {
 
         if (currentTotal == 0) {
             total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
             currentTotal += total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length-1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = "  + currentTotal.toString();
-        
+            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+
         } else {
             array = [];
             array.push(currentTotal);
             currentTotal = currentTotal + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " + " +    numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
-        
+            display.textContent = array[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
         }
     }
 
-    if (opererandArray.slice(opererandArray.length-1,opererandArray.length)[0]== '-') {
+    if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '-') {
 
         if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length-1)[0] - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
             currentTotal = total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length-1)[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = "  + currentTotal.toString();
+            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
         } else {
             array = [];
             array.push(currentTotal);
             currentTotal = currentTotal - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " - " +    numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString()     + " = " + currentTotal.toString()
+            display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
         }
     }
 }

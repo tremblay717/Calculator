@@ -193,10 +193,14 @@ equal.onclick = function operate () {
         if (currentTotal == 0) {
             total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
             currentTotal += total;
-            display.textContent = currentTotal;
+            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length-1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = "  + currentTotal.toString();
+        
         } else {
+            array = [];
+            array.push(currentTotal);
             currentTotal = currentTotal + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = currentTotal
+            display.textContent = array[0].toString() + " + " +    numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+        
         }
     }
 

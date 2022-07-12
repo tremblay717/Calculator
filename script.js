@@ -1,23 +1,21 @@
 // Start by displaying the zero number on our calculator screen
 
 zeroTotal = "0";
-
 currentTotal = 0;
 total = 0;
+
+// Array that stores our converted number strings to number type. 
 numberArray = [];
 
-
+// Keep track of the operation in the console - will be deleted
 operationArray = [];
 
-// for (let i = 0; i < operationArray.length; i++) {
-//     numberArray.push(Number(operationArray[i]))
-// }
-
+// To store our operators
 opererandArray = [];
 
 currentNumber = "";
 
-zeroTotal = "0";
+
 const display = document.querySelector("#numDisplay");
 display.classList.add('content');
 display.textContent = zeroTotal;
@@ -31,65 +29,69 @@ deleteOps.onclick = function () {
         numberArray.pop()
         currentNumber = currentNumber.slice(0, currentNumber.length - 1);
         display.textContent = currentNumber;
-    } else if (currentNumber.length == 0) {
+    } else if (currentNumber.length <= 1) {
         currentNumber = ""
         zeroTotal = "0";
         display.textContent = zeroTotal;
-        operationArray.push("+");
     } else if (display.textContent == currentTotal) {
         return;
     }
 }
 
 const clear = document.querySelector("#clear");
-clear.onclick = function () {
+clear.onclick = function plusMinus() {
     delete zeroTotal;
     currentNumber = "";
     zeroTotal = "0";
-
     display.textContent = zeroTotal;
-
     operationArray = [];
+    opererandArray = [];
     numberArray = [];
-
     currentTotal = 0;
     total = 0;
+    arrayTotal = [];
 }
 
 const parenteses = document.querySelector("#parenteses");
+
+// This functions allows the user to convert a positive number to a negative number and vice versa 
 const plusMinus = document.querySelector("#plusMoins");
+plusMinus.onclick = function () {
+    if (currentNumber.includes("-") == false) {
+        array = [];
+        array.push(currentNumber);
+        currentNumber = "-" + array[0];
+        display.textContent = currentNumber;
+    } else {
+        array = []
+        array.push(currentNumber.slice(1, currentNumber.length)[0]);
+        currentNumber = array[0];
+        display.textContent = currentNumber;
+    }
+}
+
+// converts a number to the percentage format
+
 const perc = document.querySelector("#perc");
+perc.onclick = function () {
+    var percNumber = Number(currentNumber) * 100;
+    if (percNumber % 1 == 0) {
+        display.textContent = percNumber.toString() + "%";
 
+    // } else {
+    //     display.textContent = percNumber.toFixed(4).toString() + "%";
+    // }
+}}
 
-// perc.onclick = function () {
-//     deleteOps.onclick = function () {
-//         currentNumberslice(0, currentNumber.length - 1);
-//             display.textContent = currentNumber;
-//         } else {
-//             ;
-//             currentNumber = ""
-//             zeroTotal = "0";
-//             display.textContent = zeroTotal;
-//             operationArray.push(currentNumber);
-//             operationArray.push("+");
-//             var percNumber = Number(currentNumber) * 100;
-//             display.textContent = percNumber.toString() + "%";
-//         }
-
-//     var percNumber = Number(currentNumber) * 100;
-//     display.textContent = percNumber.toString() + "%";
-
-// }
 
 // We have nine event listeners for the numbers on our numpad. Each event (+, -, *, /, **) will concatenate a string and that will 
 // be converted into a Number in a designated array. 
-
 const nine = document.querySelector("#nine")
 nine.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "9";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "9";
         display.textContent = currentNumber;
         display.style.fontSize = "35px"
@@ -100,7 +102,7 @@ eight.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "8";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "8";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -111,7 +113,7 @@ seven.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "7";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "7";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -123,7 +125,7 @@ six.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "6";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "6";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -135,7 +137,7 @@ five.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "5";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "5";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -147,7 +149,7 @@ four.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "4";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "4";
         display.textContent = currentNumber;
         display.style.fontSize = "35px";
@@ -159,7 +161,7 @@ three.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "3";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "3";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -171,7 +173,7 @@ two.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "2";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "2";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
@@ -183,11 +185,12 @@ one.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "1";
         display.textContent = currentNumber;
-    } else if (currentNumber.length >= 21 && currentNumber.length  <= 23) {
+    } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "1";
         display.textContent = currentNumber;
         display.style.fontSize = "36px"
     } else return;
+
 }
 
 const zero = document.querySelector("#zero");
@@ -256,72 +259,152 @@ exp.onclick = function () {
     currentNumber = "";
 }
 
+let arrayTotal = [];
 
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
 const equal = document.querySelector("#equal")
 equal.onclick = function operate() {
     numberArray.push(Number(currentNumber));
 
-    if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '+') {
+    if (opererandArray.length == 1) {
 
-        if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            currentTotal += total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+        if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '+') {
 
+            if (currentTotal == 0) {
+                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal += total;
+                currentNumber = currentTotal.toString()
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+
+            } else {
+                array = [];
+                array.push(currentTotal);
+                currentTotal = currentTotal + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentNumber = currentTotal.toString()
+                display.textContent = array[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+            }
+        } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '-') {
+
+            if (currentTotal == 0) {
+                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal = total;
+                currentNumber = currentTotal.toString()
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+            } else {
+                array = [];
+                array.push(currentTotal);
+                currentTotal = currentTotal - n / umberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentNumber = currentTotal.toString()
+                display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+            }
+        } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == 'x') {
+
+            if (currentTotal == 0) {
+                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal = total;
+                currentNumber = currentTotal.toString()
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+            } else {
+                array = [];
+                array.push(currentTotal);
+                currentTotal = currentTotal * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentNumber = currentTotal.toString()
+                display.textContent = array[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+            }
+        } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '/') {
+
+            if (currentTotal == 0) {
+                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal = total;
+                currentNumber = currentTotal.toString()
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+            } else {
+                array = [];
+                array.push(currentTotal);
+                currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentNumber = currentTotal.toString()
+                display.textContent = array[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+            }
+        } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '**') {
+
+            if (currentTotal == 0) {
+                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] ** numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal = total;
+                currentNumber = currentTotal.toString()
+
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+            } else {
+                array = [];
+                array.push(currentTotal);
+                currentTotal = currentTotal ** numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentNumber = currentTotal.toString()
+                display.textContent = array[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+
+            }
         } else {
-            array = [];
-            array.push(currentTotal);
-            currentTotal = currentTotal + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+            return;
         }
-    } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '-') {
+    } else if (opererandArray.length > 1) {
 
-        if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            currentTotal = total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-        } else {
-            array = [];
-            array.push(currentTotal);
-            currentTotal = currentTotal - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
-        }
-    } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == 'x') {
+        convertOperatorToMaths(opererandArray, numberArray, arrayTotal)
 
-        if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            currentTotal = total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-        } else {
-            array = [];
-            array.push(currentTotal);
-            currentTotal = currentTotal * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
-        }
-    } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '/') {
-
-        if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            currentTotal = total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-        } else {
-            array = [];
-            array.push(currentTotal);
-            currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
-        }
-    } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '**') {
-
-        if (currentTotal == 0) {
-            total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] ** numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            currentTotal = total;
-            display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-        } else {
-            array = [];
-            array.push(currentTotal);
-            currentTotal = currentTotal ** numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-            display.textContent = array[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
-        }
     }
+}
+
+
+
+function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
+
+    let message = "";
+    let total = "";
+
+    for (let i = 0; i < numberArray.length - 1; i++) {
+        if (opererandArray.slice(i, i + 1) == "+") {
+            if (arrayTotal.length == 0) {
+                let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+
+
+            } else {
+                let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            }
+        } else if (opererandArray.slice(i, i + 1) == "-") {
+            if (arrayTotal.length == 0) {
+                let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            } else {
+                let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            }
+        } else if (opererandArray.slice(i, i + 1) == "/") {
+            if (arrayTotal.length == 0) {
+                let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            } else {
+                let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            }
+        } else if (opererandArray.slice(i, i + 1) == "x") {
+            if (arrayTotal.length == 0) {
+                let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            } else {
+                let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] * numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            }
+        } else if (opererandArray.slice(i, i + 1) == "**") {
+            if (arrayTotal.length == 0) {
+                let currentEquation = numberArray.slice(i, i + 1)[0] ** numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            } else {
+                let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] ** numberArray.slice(i + 1, i + 2)[0];
+                arrayTotal.push(currentEquation);
+            }
+        }
+        console.log(arrayTotal);
+    }
+
+    display.textContent = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+
 }

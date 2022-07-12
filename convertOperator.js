@@ -1,58 +1,61 @@
-function convertOperatorToMaths(opererandArray, numberArray,total) {
+function convertOperatorToMaths(opererandArray, numberArray,arrayTotal) {
 
   for (let i = 0; i < numberArray.length - 1; i++) {
     if (opererandArray.slice(i, i + 1) == "+") {
-      if (total.length == 0) {
+      if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        arrayTotal.push(currentEquation);
       } else {
-        let currentEquation = total.slice(total.length - 1, total.length)[0] + numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
       }
     }
     else if (opererandArray.slice(i, i + 1) == "-") {
-      if (total.length == 0) {
+      if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        arrayTotal.push(currentEquation);
       } else {
-        let currentEquation = total.slice(total.length - 1, total.length)[0] - numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
       }
     }
     else if (opererandArray.slice(i, i + 1) == "/") {
-      if (total.length == 0) {
+      if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        arrayTotal.push(currentEquation);
       } else {
-        let currentEquation = total.slice(total.length - 1, total.length)[0] / numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
       }
     }
     else if (opererandArray.slice(i, i + 1) == "x") {
-      if (total.length == 0) {
+      if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        arrayTotal.push(currentEquation);
       } else {
-        let currentEquation = total.slice(total.length - 1, total.length)[0] * numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] * numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
       }
     }
     else if (opererandArray.slice(i, i + 1) == "**") {
-      if (total.length == 0) {
+      if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] ** numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        arrayTotal.push(currentEquation);
       } else {
-        let currentEquation = total.slice(total.length - 1, total.length)[0] ** numberArray.slice(i + 1, i + 2)[0];
-        total.push(currentEquation);
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] ** numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
       }
     }
-    console.log(total);
+    console.log(arrayTotal);
   }
+
+  display.textContent = arrayTotal.slice(arrayTotal.length-1,arrayTotal.length)[0];
+
 }
 
 let numberArray = [12, 7, 5, 3,7];
 let opererandArray = ["+", "-", "x","/"];
-let total = [];
+let arrayTotal = [];
 
 
-convertOperatorToMaths(opererandArray, numberArray,total);
+convertOperatorToMaths(opererandArray, numberArray,arrayTotal);

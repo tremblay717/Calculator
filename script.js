@@ -351,8 +351,6 @@ equal.onclick = function operate() {
     }
 }
 
-
-
 function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
 
     let message = "";

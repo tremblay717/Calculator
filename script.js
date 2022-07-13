@@ -293,7 +293,7 @@ equal.onclick = function operate() {
             } else {
                 array = [];
                 array.push(currentTotal);
-                currentTotal = currentTotal - n / umberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                currentTotal = currentTotal - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
                 currentNumber = currentTotal.toString()
                 display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
             }
@@ -340,15 +340,23 @@ equal.onclick = function operate() {
                 currentNumber = currentTotal.toString()
                 display.textContent = array[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
 
-            }
+            }   
+
         } else {
             return;
         }
+
+        opererandArray.pop();
+
+        numberArray.push(currentTotal);     
+
+
     } else if (opererandArray.length > 1) {
 
         convertOperatorToMaths(opererandArray, numberArray, arrayTotal)
 
     }
+
 }
 
 function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
@@ -361,7 +369,6 @@ function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
             if (arrayTotal.length == 0) {
                 let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
                 arrayTotal.push(currentEquation);
-
 
             } else {
                 let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1, i + 2)[0];

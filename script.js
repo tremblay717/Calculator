@@ -311,7 +311,7 @@ equal.onclick = function operate() {
         } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == 'x') {
 
             if (currentTotal == 0) {
-                total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                total = numberArry.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
                 currentTotal = total;
                 currentNumber = currentTotal.toString()
                 display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
@@ -320,7 +320,7 @@ equal.onclick = function operate() {
                 array.push(currentTotal);
                 currentTotal = currentTotal * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
                 currentNumber = currentTotal.toString()
-                display.textContent = array[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
+                display.textContent = array[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
             }
         } else if (opererandArray.slice(opererandArray.length - 1, opererandArray.length)[0] == '/') {
 
@@ -372,9 +372,6 @@ equal.onclick = function operate() {
 
 function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
 
-    let message = "";
-    let total = "";
-
     for (let i = 0; i < numberArray.length - 1; i++) {
         if (opererandArray.slice(i, i + 1) == "+") {
             if (arrayTotal.length == 0) {
@@ -418,10 +415,10 @@ function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
                 arrayTotal.push(currentEquation);
             }
         }
-        console.log(arrayTotal);
+
     }
 
-    display.textContent = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+    display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length-1, numberArray.length)[0] + " = " + arrayTotal.slice(arrayTotal.length-1, arrayTotal.length)[0];
     currentNumber = ""
 
 }

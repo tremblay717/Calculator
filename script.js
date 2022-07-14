@@ -33,7 +33,7 @@ deleteOps.onclick = function () {
         currentNumber = currentNumber.slice(0, currentNumber.length - 1);
         display.textContent = messageArray.join(" ") + " " + currentNumber;
     } else if (currentNumber.length <= 1) {
-        currentNumber = "";
+        currentNumber = "0";
         zeroTotal = "0";
         display.textContent = messageArray.join(" ") + " " + zeroTotal;
     } else if (display.textContent == currentTotal) {
@@ -116,7 +116,8 @@ six.onclick = function () {
     if (currentNumber.length <= 10) {
         currentNumber += "6";
         display.textContent = messageArray.join(" ") + " " + currentNumber;
-    } else return; }
+    } else return;
+}
 
 five.onclick = function () {
     if (currentNumber.length <= 10) {
@@ -153,8 +154,7 @@ one.onclick = function () {
     if (currentNumber.length <= 10) {
         currentNumber += "1";
         display.textContent = messageArray.join(" ") + " " + currentNumber;;
-    } else return;
-
+    } else return;  
 }
 
 const zero = document.querySelector("#zero");
@@ -175,39 +175,42 @@ point.onclick = function () {
         display.textContent = currentNumber;
     }
 }
+
+
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function () {
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("+");
-    messageArray.push("+")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
+        numberArray.push(Number(currentNumber));
+        messageArray.push(currentNumber)
+        operatorArray.push("+");
+        messageArray.push("+")
+        display.textContent = messageArray.join(" ");
+        currentNumber = "";
 }
 
 // This function add the "-" operand to an operand Array
 const minus = document.querySelector("#minus");
 minus.onclick = function () {
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("-");
-    messageArray.push("-")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-}
+        numberArray.push(Number(currentNumber));
+        messageArray.push(currentNumber)
+        operatorArray.push("-");
+        messageArray.push("-")
+        display.textContent = messageArray.join(" ");
+        currentNumber = "";
+
+    }
+
 
 // This function add the "/" operand to an operand Array
 const division = document.querySelector("#division");
 division.onclick = function () {
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("/");
-    console.log(operationArray);
-    messageArray.push("/")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-}
+        numberArray.push(Number(currentNumber));
+        messageArray.push(currentNumber)
+        operatorArray.push("/");
+        messageArray.push("/")
+        display.textContent = messageArray.join(" ");
+        currentNumber = "";
+    }
 
 // This function add the "*" operand to an operand Array
 const multiple = document.querySelector("#multiple");
@@ -218,7 +221,8 @@ multiple.onclick = function () {
     messageArray.push("x")
     display.textContent = messageArray.join(" ");
     currentNumber = "";
-}
+    }
+
 
 // This function add the ** operand to an operand Array
 const exp = document.querySelector("#exp");
@@ -226,10 +230,12 @@ exp.onclick = function () {
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("**");
-    messageArray.push("**")
+    messageArray.push("^")
     display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
+
+
 let arrayTotal = [];
 
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
@@ -247,8 +253,8 @@ equal.onclick = function operate() {
                 currentTotal += total;
                 currentNumber = currentTotal.toString()
                 display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-            
-            
+
+
             } else {
                 array = [];
                 array.push(currentTotal);
@@ -288,13 +294,20 @@ equal.onclick = function operate() {
 
             if (currentTotal == 0) {
                 total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {display.textContent = "Error; division by zero is not possible"}
+                else {
+
+
                 currentTotal = total;
                 currentNumber = currentTotal.toString()
                 display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-            } else {
+            }} else {
                 array = [];
                 array.push(currentTotal);
-                currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {display.textContent = "Error; division by zero is not possible"}
+                else {
+                currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];}
+                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {}
                 currentNumber = currentTotal.toString()
                 display.textContent = array[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
             }
@@ -332,7 +345,7 @@ equal.onclick = function operate() {
         convertOperatorToMaths(operatorArray, numberArray, arrayTotal)
         arrayTotal = []
         operatorArray = [];
-        numberArray=[];
+        numberArray = [];
     }
 
 }

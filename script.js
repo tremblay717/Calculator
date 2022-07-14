@@ -13,6 +13,9 @@ operationArray = [];
 // To store our operators
 opererandArray = [];
 
+//Display Message Array
+messageArray = []
+
 currentNumber = "";
 
 
@@ -50,6 +53,7 @@ clear.onclick = function plusMinus() {
     currentTotal = 0;
     total = 0;
     arrayTotal = [];
+    messageArray = [];
 }
 
 const parenteses = document.querySelector("#parenteses");
@@ -78,11 +82,10 @@ perc.onclick = function () {
     if (percNumber % 1 == 0) {
         display.textContent = percNumber.toString() + "%";
 
-    // } else {
-    //     display.textContent = percNumber.toFixed(4).toString() + "%";
-    // }
-}}
-
+    } else {
+        display.textContent = percNumber.toFixed(4).toString() + "%";
+    }
+}
 
 // We have nine event listeners for the numbers on our numpad. Each event (+, -, *, /, **) will concatenate a string and that will 
 // be converted into a Number in a designated array. 
@@ -90,10 +93,10 @@ const nine = document.querySelector("#nine")
 nine.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "9";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "9";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "35px"
     } else return;
 }
@@ -101,21 +104,22 @@ const eight = document.querySelector("#eight");
 eight.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "8";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "8";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
+
 const seven = document.querySelector("#seven");
 seven.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "7";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "7";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
@@ -124,10 +128,10 @@ const six = document.querySelector("#six");
 six.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "6";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "6";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
@@ -136,10 +140,10 @@ const five = document.querySelector("#five");
 five.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "5";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "5";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
@@ -148,11 +152,11 @@ const four = document.querySelector("#four");
 four.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "4";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "4";
-        display.textContent = currentNumber;
-        display.style.fontSize = "35px";
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
+        display.style.fontSize = "36px"
     } else return;
 }
 
@@ -160,10 +164,10 @@ const three = document.querySelector("#three");
 three.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "3";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "3";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
@@ -172,10 +176,10 @@ const two = document.querySelector("#two");
 two.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "2";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "2";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 }
@@ -184,10 +188,10 @@ const one = document.querySelector("#one");
 one.onclick = function () {
     if (currentNumber.length < 21) {
         currentNumber += "1";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else if (currentNumber.length >= 21 && currentNumber.length <= 23) {
         currentNumber += "1";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
         display.style.fontSize = "36px"
     } else return;
 
@@ -197,13 +201,12 @@ const zero = document.querySelector("#zero");
 zero.onclick = function () {
     if (currentNumber.length < 23 && currentNumber !== "0") {
         currentNumber += "0";
-        display.textContent = currentNumber;
+        display.textContent = messageArray.join(" ") + " " + currentNumber;;
     } else return;
 }
-
 // This function creates a decimal number
 const point = document.querySelector("#point");
-point.onclick = function () {
+point.onclick = function () {three
     if (currentNumber.includes(".")) {
         display.textContent = currentNumber;
     } else {
@@ -215,8 +218,10 @@ point.onclick = function () {
 const plus = document.querySelector("#plus");
 plus.onclick = function () {
     numberArray.push(Number(currentNumber));
-    operationArray.push(currentNumber);
+    messageArray.push(currentNumber)
     opererandArray.push("+");
+    messageArray.push("+")
+    display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
 
@@ -224,8 +229,10 @@ plus.onclick = function () {
 const minus = document.querySelector("#minus");
 minus.onclick = function () {
     numberArray.push(Number(currentNumber));
-    operationArray.push(currentNumber);
+    messageArray.push(currentNumber)
     opererandArray.push("-");
+    messageArray.push("-")
+    display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
 
@@ -233,9 +240,11 @@ minus.onclick = function () {
 const division = document.querySelector("#division");
 division.onclick = function () {
     numberArray.push(Number(currentNumber));
-    operationArray.push(currentNumber);
+    messageArray.push(currentNumber)
     opererandArray.push("/");
     console.log(operationArray);
+    messageArray.push("/")
+    display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
 
@@ -243,9 +252,10 @@ division.onclick = function () {
 const multiple = document.querySelector("#multiple");
 multiple.onclick = function () {
     numberArray.push(Number(currentNumber));
-    operationArray.push(currentNumber);
+    messageArray.push(currentNumber)
     opererandArray.push("x");
-    console.log(operationArray);
+    messageArray.push("x")
+    display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
 
@@ -253,9 +263,10 @@ multiple.onclick = function () {
 const exp = document.querySelector("#exp");
 exp.onclick = function () {
     numberArray.push(Number(currentNumber));
-    operationArray.push(currentNumber);
+    messageArray.push(currentNumber)
     opererandArray.push("**");
-    console.log(operationArray);
+    messageArray.push("**")
+    display.textContent = messageArray.join(" ");
     currentNumber = "";
 }
 
@@ -275,7 +286,7 @@ equal.onclick = function operate() {
                 currentTotal += total;
                 currentNumber = currentTotal.toString()
                 display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-
+            
             } else {
                 array = [];
                 array.push(currentTotal);
@@ -303,7 +314,7 @@ equal.onclick = function operate() {
                 total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
                 currentTotal = total;
                 currentNumber = currentTotal.toString()
-                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " X " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
             } else {
                 array = [];
                 array.push(currentTotal);
@@ -340,7 +351,7 @@ equal.onclick = function operate() {
                 currentNumber = currentTotal.toString()
                 display.textContent = array[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
 
-            }   
+            }
 
         } else {
             return;
@@ -348,7 +359,7 @@ equal.onclick = function operate() {
 
         opererandArray.pop();
 
-        numberArray.push(currentTotal);     
+        numberArray.push(currentTotal);
 
 
     } else if (opererandArray.length > 1) {
@@ -411,5 +422,6 @@ function convertOperatorToMaths(opererandArray, numberArray, arrayTotal) {
     }
 
     display.textContent = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+    currentNumber = ""
 
 }

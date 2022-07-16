@@ -6,6 +6,8 @@ total = 0;
 // Array that stores our converted number strings to number type. 
 numberArray = [];
 
+let memoryArray = [];
+
 // Keep track of the operation in the console - will be deleted
 operationArray = [];
 
@@ -111,9 +113,12 @@ perc.onclick = function() {
 
 // We have nine event listeners for the numbers on our numpad. Each event (+, -, *, /, **) will concatenate a string and that will 
 // be converted into a Number in a designated array. 
+
+
+
 const nine = document.querySelector("#nine")
 nine.onclick = function() {
-  if (currentNumber.length <= 10) {
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
     currentNumber += "9";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
@@ -122,8 +127,8 @@ nine.onclick = function() {
 }
 const eight = document.querySelector("#eight");
 eight.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "8";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "8";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -132,8 +137,8 @@ eight.onclick = function() {
 
 const seven = document.querySelector("#seven");
 seven.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "7";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "7";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -141,8 +146,8 @@ seven.onclick = function() {
 }
 const six = document.querySelector("#six");
 six.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "6";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "6";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -150,8 +155,8 @@ six.onclick = function() {
 }
 
 five.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "5";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "5";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -160,8 +165,8 @@ five.onclick = function() {
 
 const four = document.querySelector("#four");
 four.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "4";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "4";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -170,8 +175,8 @@ four.onclick = function() {
 
 const three = document.querySelector("#three");
 three.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "3";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "3";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -179,8 +184,8 @@ three.onclick = function() {
 }
 const two = document.querySelector("#two");
 two.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "2";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "2";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -189,8 +194,8 @@ two.onclick = function() {
 
 const one = document.querySelector("#one");
 one.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "1";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "1";
     display.textContent = messageArray.join(" ") + " " + currentNumber;;
   } else {
     return;
@@ -199,8 +204,8 @@ one.onclick = function() {
 
 const zero = document.querySelector("#zero");
 zero.onclick = function() {
-  if (currentNumber.length <= 10) {
-    currentNumber += "0";
+    if (currentNumber.length <= 10 && memoryArray.length == 0) {
+        currentNumber += "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -209,8 +214,7 @@ zero.onclick = function() {
 // This function creates a decimal number
 const point = document.querySelector("#point");
 point.onclick = function() {
-  three
-  if (currentNumber.includes(".")) {
+    if (currentNumber.includes(".")) {
     display.textContent = currentNumber;
   } else {
     currentNumber += "."
@@ -218,11 +222,11 @@ point.onclick = function() {
   }
 }
 
-
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function() {
   if (currentNumber != "") {
+    memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("+");
@@ -423,6 +427,7 @@ equal.onclick = function operate() {
     operatorArray = [];
     messageArray = [];
     numberArray = [];
+    memoryArray.push(currentTotal);
     currentNumber = currentTotal.toString()
     currentTotal = 0;
 

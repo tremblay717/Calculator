@@ -29,15 +29,15 @@ display.textContent = zeroTotal;
 const deleteOps = document.querySelector("#delete");
 deleteOps.onclick = function () {
 
-    if (currentNumber.length > 1) {
+    if (display.textContent == currentTotal) {
+        return;}
+    else if (currentNumber.length > 1) {
         currentNumber = currentNumber.slice(0, currentNumber.length - 1);
         display.textContent = messageArray.join(" ") + " " + currentNumber;
     } else if (currentNumber.length <= 1) {
         currentNumber = "0";
         zeroTotal = "0";
         display.textContent = messageArray.join(" ") + " " + zeroTotal;
-    } else if (display.textContent == currentTotal) {
-        return;
     }
 }
 
@@ -154,7 +154,7 @@ one.onclick = function () {
     if (currentNumber.length <= 10) {
         currentNumber += "1";
         display.textContent = messageArray.join(" ") + " " + currentNumber;;
-    } else return;  
+    } else return;
 }
 
 const zero = document.querySelector("#zero");
@@ -180,37 +180,37 @@ point.onclick = function () {
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function () {
-        numberArray.push(Number(currentNumber));
-        messageArray.push(currentNumber)
-        operatorArray.push("+");
-        messageArray.push("+")
-        display.textContent = messageArray.join(" ");
-        currentNumber = "";
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("+");
+    messageArray.push("+")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
 }
 
 // This function add the "-" operand to an operand Array
 const minus = document.querySelector("#minus");
 minus.onclick = function () {
-        numberArray.push(Number(currentNumber));
-        messageArray.push(currentNumber)
-        operatorArray.push("-");
-        messageArray.push("-")
-        display.textContent = messageArray.join(" ");
-        currentNumber = "";
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("-");
+    messageArray.push("-")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
 
-    }
+}
 
 
 // This function add the "/" operand to an operand Array
 const division = document.querySelector("#division");
 division.onclick = function () {
-        numberArray.push(Number(currentNumber));
-        messageArray.push(currentNumber)
-        operatorArray.push("/");
-        messageArray.push("/")
-        display.textContent = messageArray.join(" ");
-        currentNumber = "";
-    }
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("/");
+    messageArray.push("/")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+}
 
 // This function add the "*" operand to an operand Array
 const multiple = document.querySelector("#multiple");
@@ -221,7 +221,7 @@ multiple.onclick = function () {
     messageArray.push("x")
     display.textContent = messageArray.join(" ");
     currentNumber = "";
-    }
+}
 
 
 // This function add the ** operand to an operand Array
@@ -294,19 +294,23 @@ equal.onclick = function operate() {
 
             if (currentTotal == 0) {
                 total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {display.textContent = "Error; division by zero is not possible"}
-                else {
+                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
+                    display.textContent = "Error; division by zero is not possible"
+                } else {
 
 
-                currentTotal = total;
-                currentNumber = currentTotal.toString()
-                display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
-            }} else {
+                    currentTotal = total;
+                    currentNumber = currentTotal.toString()
+                    display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString();
+                }
+            } else {
                 array = [];
                 array.push(currentTotal);
-                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {display.textContent = "Error; division by zero is not possible"}
-                else {
-                currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];}
+                if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
+                    display.textContent = "Error; division by zero is not possible"
+                } else {
+                    currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
+                }
                 if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {}
                 currentNumber = currentTotal.toString()
                 display.textContent = array[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal.toString()
@@ -337,15 +341,13 @@ equal.onclick = function operate() {
         // We reset some arrays if the users want to make other calculations after he pushes on the equal buttons. 
         operatorArray = [];
         messageArray = [];
+        numberArray = [];
         currentNumber = currentTotal.toString()
         currentTotal = 0;
 
     } else if (operatorArray.length > 1) {
 
         convertOperatorToMaths(operatorArray, numberArray, arrayTotal)
-        arrayTotal = []
-        operatorArray = [];
-        numberArray = [];
     }
 
 }

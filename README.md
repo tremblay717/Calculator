@@ -7,7 +7,6 @@ Basic calculator that contains JavaScript functions for all of the basic math op
 <li>multiply</li>
 <li>divide</li>
 <li>power</li>
-<li>add</li>
 </ul>
 
 <h2>Some Features</h2>

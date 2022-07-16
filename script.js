@@ -507,8 +507,6 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
     }
   }
 
-  console.log(numberArray)
-
   if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] != 0) {
     display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
       0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];

@@ -355,9 +355,9 @@ equal.onclick = function operate() {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
-          display.textContent = "Error; division by zero is not possible"
+          display.textContent = "Error; division by zero is not possible";
+          display.style.fontSize='24px';
         } else {
-
 
           currentTotal = total;
           currentNumber = currentTotal.toString()
@@ -369,7 +369,9 @@ equal.onclick = function operate() {
         array = [];
         array.push(currentTotal);
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
-          display.textContent = "Error; division by zero is not possible"
+          display.textContent = "Error; division by zero is not possible";
+          display.style.fontSize='24px';
+
         } else {
           currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
         }
@@ -412,6 +414,11 @@ equal.onclick = function operate() {
     currentNumber = currentTotal.toString()
     currentTotal = 0;
 
+    if (currentNumber.length > 10) {
+        display.style.fontSize='24px';
+    }
+
+
   } else if (operatorArray.length > 1) {
 
     convertOperatorToMaths(operatorArray, numberArray, arrayTotal)
@@ -438,24 +445,15 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
         arrayTotal.push(currentEquation);
       }
     } else if (operatorArray.slice(i, i + 1) == "-") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
-    } else if (operatorArray.slice(i, i + 1) == "/") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
-    } else if (operatorArray.slice(i, i + 1) == "x") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
+        } else {
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+          }  }
+    else if (operatorArray.slice(i, i + 1) == "x") {
       if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
         arrayTotal.push(currentEquation);
@@ -476,22 +474,42 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
     }
 
   }
+  
 
+  if (arrayTotal.slice(arrayTotal.length-1, arrayTotal.length)[0] != Infinity) {
   display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
     0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+    currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
+    operatorArray = [];
+    numberArray = [];
+    currentTotal = 0;
+    total = 0;
+    arrayTotal = [];
+    messageArray = [];
   
-  currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
-  operatorArray = [];
-  numberArray = [];
-  currentTotal = 0;
-  total = 0;
-  arrayTotal = [];
-  messageArray = [];
+
+  }
+
+  else {
+    display.textContent = "Error; division by zero is not possible";
+    display.style.fontSize='24px';
+    currentNumber = "";
+    operatorArray = [];
+    numberArray = [];
+    currentTotal = 0;
+    total = 0;
+    arrayTotal = [];
+    messageArray = []; 
+  }
 
 
+  if (currentNumber.length > 10) {
+    display.style.fontSize='24px';
+}
 
   if (messageArray.length >= 5) {
     display.style.fontSize = "24px";
   }
-
 }
+
+

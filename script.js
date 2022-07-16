@@ -79,6 +79,7 @@ clear.onclick = function plusMinus() {
   total = 0;
   arrayTotal = [];
   messageArray = [];
+  memoryArray = [];
   display.style.fontSize = "24px";
 }
 
@@ -512,6 +513,7 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
     display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
       0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
     currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
+    memoryArray.push(currentNumber);
     operatorArray = [];
     numberArray = [];
     currentTotal = 0;

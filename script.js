@@ -104,14 +104,18 @@ nine.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "9";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 const eight = document.querySelector("#eight");
 eight.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "8";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 const seven = document.querySelector("#seven");
@@ -119,22 +123,27 @@ seven.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "7";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
-
 const six = document.querySelector("#six");
 six.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "6";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 five.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "5";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 const four = document.querySelector("#four");
@@ -142,7 +151,9 @@ four.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "4";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 const three = document.querySelector("#three");
@@ -150,14 +161,18 @@ three.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "3";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 const two = document.querySelector("#two");
 two.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "2";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 const one = document.querySelector("#one");
@@ -165,7 +180,9 @@ one.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "1";
     display.textContent = messageArray.join(" ") + " " + currentNumber;;
-  } else return;
+  } else {
+    return;
+  }
 }
 
 const zero = document.querySelector("#zero");
@@ -173,7 +190,9 @@ zero.onclick = function() {
   if (currentNumber.length <= 10) {
     currentNumber += "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else return;
+  } else {
+    return;
+  }
 }
 // This function creates a decimal number
 const point = document.querySelector("#point");
@@ -191,59 +210,76 @@ point.onclick = function() {
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function() {
-  numberArray.push(Number(currentNumber));
-  messageArray.push(currentNumber)
-  operatorArray.push("+");
-  messageArray.push("+")
-  display.textContent = messageArray.join(" ");
-  currentNumber = "";
+  if (currentNumber != "") {
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("+");
+    messageArray.push("+")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+  } else {
+    return;
+  }
 }
 
-// This function add the "-" operand to an operand Array
+// This function adds the - operator
 const minus = document.querySelector("#minus");
 minus.onclick = function() {
-  numberArray.push(Number(currentNumber));
-  messageArray.push(currentNumber)
-  operatorArray.push("-");
-  messageArray.push("-")
-  display.textContent = messageArray.join(" ");
-  currentNumber = "";
-
+  if (currentNumber != "") {
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("-");
+    messageArray.push("-")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+  } else {
+    return;
+  }
 }
 
 
-// This function add the "/" operand to an operand Array
+// This function adds the / operator
 const division = document.querySelector("#division");
 division.onclick = function() {
-  numberArray.push(Number(currentNumber));
-  messageArray.push(currentNumber)
-  operatorArray.push("/");
-  messageArray.push("/")
-  display.textContent = messageArray.join(" ");
-  currentNumber = "";
+  if (currentNumber != "") {
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("/");
+    messageArray.push("/")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+  } else {}
 }
 
-// This function add the "*" operand to an operand Array
+// This function adds the x operator
 const multiple = document.querySelector("#multiple");
 multiple.onclick = function() {
-  numberArray.push(Number(currentNumber));
-  messageArray.push(currentNumber)
-  operatorArray.push("x");
-  messageArray.push("x")
-  display.textContent = messageArray.join(" ");
-  currentNumber = "";
+  if (currentNumber != "") {
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("x");
+    messageArray.push("x")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+  } else {
+    return;
+  }
 }
 
 
-// This function add the ** operand to an operand Array
+// This function adds the ** operator
 const exp = document.querySelector("#exp");
 exp.onclick = function() {
-  numberArray.push(Number(currentNumber));
-  messageArray.push(currentNumber)
-  operatorArray.push("**");
-  messageArray.push("^")
-  display.textContent = messageArray.join(" ");
-  currentNumber = "";
+  if (currentNumber != "") {
+    numberArray.push(Number(currentNumber));
+    messageArray.push(currentNumber)
+    operatorArray.push("**");
+    messageArray.push("^")
+    display.textContent = messageArray.join(" ");
+    currentNumber = "";
+  } else {
+    return;
+  }
 }
 
 

@@ -417,8 +417,13 @@ equal.onclick = function operate() {
     convertOperatorToMaths(operatorArray, numberArray, arrayTotal)
   }
 
+  operatorArray = [];
+  messageArray = [];
+  numberArray = [];
+
 }
 
+// Function used to for calculations for more than one operators.
 function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
 
   for (let i = 0; i < numberArray.length - 1; i++) {
@@ -474,6 +479,7 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
 
   display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
     0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+  
   currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
   operatorArray = [];
   numberArray = [];

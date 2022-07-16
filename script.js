@@ -242,6 +242,7 @@ plus.onclick = function() {
 const minus = document.querySelector("#minus");
 minus.onclick = function() {
   if (currentNumber != "") {
+    memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("-");
@@ -258,6 +259,7 @@ minus.onclick = function() {
 const division = document.querySelector("#division");
 division.onclick = function() {
   if (currentNumber != "") {
+    memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("/");
@@ -271,6 +273,7 @@ division.onclick = function() {
 const multiple = document.querySelector("#multiple");
 multiple.onclick = function() {
   if (currentNumber != "") {
+    memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("x");
@@ -287,6 +290,7 @@ multiple.onclick = function() {
 const exp = document.querySelector("#exp");
 exp.onclick = function() {
   if (currentNumber != "") {
+    memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("**");

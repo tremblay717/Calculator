@@ -22,6 +22,7 @@ let currentNumber = "";
 // display is the variable that we use to display our calculations on the calculator screen. 
 const display = document.querySelector("#numDisplay");
 display.classList.add('content');
+display.style.fontSize = '24px';
 display.textContent = zeroTotal;
 
 // Event Listener used in case a user wants to delete the previous number entered. 
@@ -36,12 +37,23 @@ deleteOps.onclick = function() {
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "/" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == ""))) {
     operatorArray.pop();
-    messageArray.pop()
+    messageArray.pop();
     currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
-    numberArray.pop()
-    display.textContent = messageArray.join(" ")
-    messageArray.pop()
+    numberArray.pop();
+    display.textContent = messageArray.join(" ");
+    messageArray.pop();
 
+  } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "0") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "0") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "/" && currentNumber == "0") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == "0"))) {
+    operatorArray.pop();
+    messageArray.pop();
+    currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
+    numberArray.pop();
+    display.textContent = messageArray.join(" ");
+    messageArray.pop();
   } else if (currentNumber.length > 1) {
     currentNumber = currentNumber.slice(0, currentNumber.length - 1);
     display.textContent = messageArray.join(" ") + " " + currentNumber;
@@ -65,7 +77,7 @@ clear.onclick = function plusMinus() {
   total = 0;
   arrayTotal = [];
   messageArray = [];
-  display.style.fontSize = "40px";
+  display.style.fontSize = "24px";
 }
 
 // This functions allows the user to convert a positive number to a negative number and vice versa 
@@ -75,13 +87,13 @@ plusMinus.onclick = function() {
     array = [];
     array.push(currentNumber);
     currentNumber = "-" + array[0];
-    display.textContent = messageArray.join(" ") + " " + currentNumber;;
+    display.textContent = messageArray.join(" ") + " " + currentNumber;
 
   } else {
     array = []
     array.push(currentNumber.slice(1, currentNumber.length)[0]);
     currentNumber = array[0];
-    display.textContent = messageArray.join(" ") + " " + currentNumber;;
+    display.textContent = messageArray.join(" ") + " " + currentNumber;
   }
 }
 
@@ -337,7 +349,7 @@ equal.onclick = function operate() {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
         currentTotal = total;
-        currentNumber = currentTotal.toString()
+        currentNumber = currentTotal.toString();
         display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
           " x " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
           .toString();
@@ -345,9 +357,9 @@ equal.onclick = function operate() {
         array = [];
         array.push(currentTotal);
         currentTotal = currentTotal * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        currentNumber = currentTotal.toString()
+        currentNumber = currentTotal.toString();
         display.textContent = array[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString()
+          .length)[0].toString() + " = " + currentTotal.toString();
       }
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '/') {
 
@@ -356,11 +368,11 @@ equal.onclick = function operate() {
           .length - 1, numberArray.length)[0];
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
           display.textContent = "Error; division by zero is not possible";
-          display.style.fontSize='24px';
+          display.style.fontSize = '24px';
         } else {
 
           currentTotal = total;
-          currentNumber = currentTotal.toString()
+          currentNumber = currentTotal.toString();
           display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
             " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
             .toString();
@@ -370,7 +382,7 @@ equal.onclick = function operate() {
         array.push(currentTotal);
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
           display.textContent = "Error; division by zero is not possible";
-          display.style.fontSize='24px';
+          display.style.fontSize = '24px';
 
         } else {
           currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
@@ -415,7 +427,7 @@ equal.onclick = function operate() {
     currentTotal = 0;
 
     if (currentNumber.length > 10) {
-        display.style.fontSize='24px';
+      display.style.fontSize = '24px';
     }
 
 
@@ -445,15 +457,26 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
         arrayTotal.push(currentEquation);
       }
     } else if (operatorArray.slice(i, i + 1) == "-") {
-        if (arrayTotal.length == 0) {
-          let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
-          arrayTotal.push(currentEquation);
-        } else {
-          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
-            i + 2)[0];
-          arrayTotal.push(currentEquation);
-          }  }
-    else if (operatorArray.slice(i, i + 1) == "x") {
+      if (arrayTotal.length == 0) {
+        let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
+      } else {
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
+          i + 2)[0];
+        arrayTotal.push(currentEquation);
+      }
+    } else if (operatorArray.slice(i, i + 1) == "/") {
+      if (arrayTotal.length == 0) {
+        let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
+        arrayTotal.push(currentEquation);
+      } else {
+
+        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1,
+          i + 2)[0];
+        arrayTotal.push(currentEquation);
+      }
+
+    } else if (operatorArray.slice(i, i + 1) == "x") {
       if (arrayTotal.length == 0) {
         let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
         arrayTotal.push(currentEquation);
@@ -472,13 +495,13 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
         arrayTotal.push(currentEquation);
       }
     }
-
   }
-  
 
-  if (arrayTotal.slice(arrayTotal.length-1, arrayTotal.length)[0] != Infinity) {
-  display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
-    0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+  console.log(numberArray)
+
+  if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] != 0) {
+    display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
+      0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
     currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
     operatorArray = [];
     numberArray = [];
@@ -486,30 +509,17 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
     total = 0;
     arrayTotal = [];
     messageArray = [];
-  
 
-  }
 
-  else {
+  } else {
     display.textContent = "Error; division by zero is not possible";
-    display.style.fontSize='24px';
+    display.style.fontSize = '24px';
     currentNumber = "";
     operatorArray = [];
     numberArray = [];
     currentTotal = 0;
     total = 0;
     arrayTotal = [];
-    messageArray = []; 
-  }
-
-
-  if (currentNumber.length > 10) {
-    display.style.fontSize='24px';
-}
-
-  if (messageArray.length >= 5) {
-    display.style.fontSize = "24px";
+    messageArray = [];
   }
 }
-
-

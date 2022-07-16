@@ -93,6 +93,12 @@ button {
     border-radius: 7px;
 }
 
+button:hover {
+    background-color: #643296;
+    transition: background-color 0.5s;
+
+}
+
 .equal {
     background-color: #01FF70;
     color: black;

@@ -86,18 +86,25 @@ clear.onclick = function plusMinus() {
 // This functions allows the user to convert a positive number to a negative number and vice versa 
 const plusMinus = document.querySelector("#plusMoins");
 plusMinus.onclick = function() {
-  if (currentNumber.includes("-") == false) {
+
+  if (currentNumber[0] == "0") {
+    currentNumber = "0";
+    display.textContent = messageArray.join(" ") + " " + currentNumber;
+  } else if (currentNumber.includes("-") == false) {
     array = [];
     array.push(currentNumber);
     currentNumber = "-" + array[0];
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-
+  } else if (currentNumber.includes("-") == true && currentNumber.length == 1) {
+    currentNumber = "";
+    display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     array = []
     array.push(currentNumber.slice(1, currentNumber.length)[0]);
     currentNumber = array[0];
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   }
+  array = [];
 }
 
 // converts a number to the percentage format
@@ -128,8 +135,8 @@ nine.onclick = function() {
 }
 const eight = document.querySelector("#eight");
 eight.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "8";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "8";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -138,8 +145,8 @@ eight.onclick = function() {
 
 const seven = document.querySelector("#seven");
 seven.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "7";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "7";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -147,8 +154,8 @@ seven.onclick = function() {
 }
 const six = document.querySelector("#six");
 six.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "6";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "6";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -156,8 +163,8 @@ six.onclick = function() {
 }
 
 five.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "5";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "5";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -166,8 +173,8 @@ five.onclick = function() {
 
 const four = document.querySelector("#four");
 four.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "4";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "4";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -176,8 +183,8 @@ four.onclick = function() {
 
 const three = document.querySelector("#three");
 three.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "3";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "3";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -185,8 +192,8 @@ three.onclick = function() {
 }
 const two = document.querySelector("#two");
 two.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "2";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "2";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -195,8 +202,8 @@ two.onclick = function() {
 
 const one = document.querySelector("#one");
 one.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "1";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "1";
     display.textContent = messageArray.join(" ") + " " + currentNumber;;
   } else {
     return;
@@ -205,8 +212,8 @@ one.onclick = function() {
 
 const zero = document.querySelector("#zero");
 zero.onclick = function() {
-    if (currentNumber.length <= 10 && memoryArray.length == 0) {
-        currentNumber += "0";
+  if (currentNumber.length <= 10 && memoryArray.length == 0) {
+    currentNumber += "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
@@ -215,7 +222,7 @@ zero.onclick = function() {
 // This function creates a decimal number
 const point = document.querySelector("#point");
 point.onclick = function() {
-    if (currentNumber.includes(".")) {
+  if (currentNumber.includes(".")) {
     display.textContent = currentNumber;
   } else {
     currentNumber += "."

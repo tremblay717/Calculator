@@ -36,40 +36,49 @@ deleteOps.onclick = function() {
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == ""))) {
-    operatorArray.pop();
-    messageArray.pop();
-    currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
-    numberArray.pop();
-    display.textContent = messageArray.join(" ");
-    messageArray.pop();
 
-  } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
+      // Deleting previous inputs in these two arrays
+      operatorArray.pop();
+      messageArray.pop();
+      
+      currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
+      numberArray.pop();
+      display.textContent = messageArray.join(" ");
+      messageArray.pop();
+
+  } 
+  
+  else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == "0"))) {
-    operatorArray.pop();
-    messageArray.pop();
-    currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
-    numberArray.pop();
-    display.textContent = messageArray.join(" ");
-    messageArray.pop();
-  } else if (currentNumber.length > 1) {
+        
+        // Deleting previous inputs in these two arrays
+        operatorArray.pop();
+        messageArray.pop();
+        currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
+        numberArray.pop();
+        display.textContent = messageArray.join(" ");
+        messageArray.pop();
+  } 
+  
+  else if (currentNumber.length > 1) {
     currentNumber = currentNumber.slice(0, currentNumber.length - 1);
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else if (currentNumber.length <= 1) {
+  } 
+  
+  else if (currentNumber.length <= 1) {
     currentNumber = "0";
     zeroTotal = "0";
     display.textContent = messageArray.join(" ") + " " + zeroTotal;
   }
 }
 
-// Variable used to clear all our calculation variables
+// Variable used to clear all our variables that were used for our various calculations.
 const clear = document.querySelector("#clear");
 clear.onclick = function plusMinus() {
-  delete zeroTotal;
   currentNumber = "";
-  zeroTotal = "0";
   display.textContent = zeroTotal;
   operatorArray = [];
   numberArray = [];
@@ -320,8 +329,10 @@ equal.onclick = function operate() {
 
   if (operatorArray.length == 1) {
 
+    // Add Operations
     if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '+') {
 
+      // In the event it is our first operations - starting from zero
       if (currentTotal == 0) {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
@@ -339,8 +350,10 @@ equal.onclick = function operate() {
         display.textContent = array[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray
           .length)[0].toString() + " = " + currentTotal.toString()
       }
+    // Minus Operations
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '-') {
 
+      // In the event it is our first operations - starting from zero
       if (currentTotal == 0) {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] - numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
@@ -357,8 +370,11 @@ equal.onclick = function operate() {
         display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray
           .length)[0].toString() + " = " + currentTotal.toString()
       }
+ 
+      // Multiplications Operations 
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == 'x') {
 
+      // In the event it is our first operations - starting from zero
       if (currentTotal == 0) {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
@@ -375,23 +391,31 @@ equal.onclick = function operate() {
         display.textContent = array[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray
           .length)[0].toString() + " = " + currentTotal.toString();
       }
+
+      // Division Operations 
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '/') {
 
+      // In the event it is our first operations - starting from zero
       if (currentTotal == 0) {
         total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray
           .length - 1, numberArray.length)[0];
+        
+        // Condition in the event we try to divide by zero
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
           display.textContent = "Error; division by zero is not possible";
           display.style.fontSize = '24px';
-        } else {
-
+        } 
+        
+        else {
           currentTotal = total;
           currentNumber = currentTotal.toString();
           display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
             " ÷ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
             .toString();
         }
-      } else {
+      } 
+      
+      else {
         array = [];
         array.push(currentTotal);
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
@@ -406,8 +430,10 @@ equal.onclick = function operate() {
         display.textContent = array[0].toString() + " ÷ " + numberArray.slice(numberArray.length - 1, numberArray
           .length)[0].toString() + " = " + currentTotal.toString()
       }
+      // We push the total into our NumberArray
       numberArray.push(currentTotal);
-
+      
+    // Power Operations
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '**') {
 
       if (currentTotal == 0) {

@@ -264,7 +264,7 @@ division.onclick = function() {
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
     operatorArray.push("/");
-    messageArray.push("/")
+    messageArray.push("÷")
     display.textContent = messageArray.join(" ");
     currentNumber = "";
   } else {}
@@ -383,7 +383,7 @@ equal.onclick = function operate() {
           currentTotal = total;
           currentNumber = currentTotal.toString();
           display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-            " / " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
+            " ÷ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
             .toString();
         }
       } else {
@@ -398,7 +398,7 @@ equal.onclick = function operate() {
         }
         if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {}
         currentNumber = currentTotal.toString()
-        display.textContent = array[0].toString() + " / " + numberArray.slice(numberArray.length - 1, numberArray
+        display.textContent = array[0].toString() + " ÷ " + numberArray.slice(numberArray.length - 1, numberArray
           .length)[0].toString() + " = " + currentTotal.toString()
       }
       numberArray.push(currentTotal);

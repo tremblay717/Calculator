@@ -232,7 +232,7 @@ point.onclick = function() {
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function() {
-  if (currentNumber != "") {
+  if (currentNumber != "" && operatorArray.length <=15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -248,7 +248,7 @@ plus.onclick = function() {
 // This function adds the - operator
 const minus = document.querySelector("#minus");
 minus.onclick = function() {
-  if (currentNumber != "") {
+  if (currentNumber != "" && operatorArray.length <=15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -265,7 +265,7 @@ minus.onclick = function() {
 // This function adds the / operator
 const division = document.querySelector("#division");
 division.onclick = function() {
-  if (currentNumber != "") {
+  if (currentNumber != "" && operatorArray.length <=15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -279,7 +279,7 @@ division.onclick = function() {
 // This function adds the x operator
 const multiple = document.querySelector("#multiple");
 multiple.onclick = function() {
-  if (currentNumber != "") {
+  if (currentNumber != "" && operatorArray.length <=15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -296,7 +296,7 @@ multiple.onclick = function() {
 // This function adds the ** operator
 const exp = document.querySelector("#exp");
 exp.onclick = function() {
-  if (currentNumber != "") {
+  if (currentNumber != "" && operatorArray.length <=15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)

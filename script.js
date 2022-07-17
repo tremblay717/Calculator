@@ -567,3 +567,5 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
     messageArray = [];
   }
 }
+
+// test commit for mac

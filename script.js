@@ -94,18 +94,22 @@ clear.onclick = function plusMinus() {
 const plusMinus = document.querySelector("#plusMoins");
 plusMinus.onclick = function() {
 
+  // Preventing user to input a negative zero
   if (display.textContent == zeroTotal) {
     currentNumber = "";
     display.textContent = zeroTotal;
   } else if (currentNumber[0] == "0" & currentNumber.length == 1) {
     currentNumber = "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else if (currentNumber.includes("-") == false) {
-    array = [];
-    array.push(currentNumber);
-    currentNumber = "-" + array[0];
+  } 
+  
+  // Turning a positive number to a negative
+  else if (currentNumber.includes("-") == false) {
+    currentNumber = "-" + currentNumber;
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else if (currentNumber.includes("-") == true && currentNumber.length == 1) {
+  } 
+  // Turning a negative number to a positive
+  else if (currentNumber.includes("-") == true && currentNumber.length == 1) {
     currentNumber = "";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
@@ -113,8 +117,8 @@ plusMinus.onclick = function() {
     array.push(currentNumber.slice(1, currentNumber.length)[0]);
     currentNumber = array[0];
     display.textContent = messageArray.join(" ") + " " + currentNumber;
+    array = [];
   }
-  array = [];
 }
 
 // converts a number to the percentage format
@@ -432,7 +436,7 @@ equal.onclick = function operate() {
       }
       // We push the total into our NumberArray
       numberArray.push(currentTotal);
-      
+
     // Power Operations
     } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '**') {
 

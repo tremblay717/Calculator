@@ -6,10 +6,8 @@ total = 0;
 // Array that stores our converted number strings to number type. 
 numberArray = [];
 
+//Used to store a previous total and force the user to either delete it or start from it when starting a new calculation
 let memoryArray = [];
-
-// Keep track of the operation in the console - will be deleted
-operationArray = [];
 
 // To store our operators
 let operatorArray = [];
@@ -87,7 +85,10 @@ clear.onclick = function plusMinus() {
 const plusMinus = document.querySelector("#plusMoins");
 plusMinus.onclick = function() {
 
-  if (currentNumber[0] == "0") {
+  if (display.textContent == zeroTotal) {
+    currentNumber = "";
+    display.textContent = zeroTotal;
+  } else if (currentNumber[0] == "0" & currentNumber.length == 1) {
     currentNumber = "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else if (currentNumber.includes("-") == false) {
@@ -329,7 +330,6 @@ equal.onclick = function operate() {
         display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
           " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
           .toString();
-
 
       } else {
         array = [];

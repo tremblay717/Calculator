@@ -36,7 +36,7 @@ deleteOps.onclick = function() {
   } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "") ||
-      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "/" && currentNumber == "") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == ""))) {
     operatorArray.pop();
     messageArray.pop();
@@ -48,7 +48,7 @@ deleteOps.onclick = function() {
   } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "0") ||
-      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "/" && currentNumber == "0") ||
+      (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == "0"))) {
     operatorArray.pop();
     messageArray.pop();
@@ -121,8 +121,6 @@ perc.onclick = function() {
 
 // We have nine event listeners for the numbers on our numpad. Each event (+, -, *, /, **) will concatenate a string and that will 
 // be converted into a Number in a designated array. 
-
-
 
 const nine = document.querySelector("#nine")
 nine.onclick = function() {

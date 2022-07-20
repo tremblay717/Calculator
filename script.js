@@ -1,7 +1,6 @@
 // Start by displaying the zero number on our calculator screen
 zeroTotal = "0";
 currentTotal = 0;
-total = 0;
 
 // Array that stores our converted number strings to number type. 
 numberArray = [];
@@ -83,7 +82,6 @@ clear.onclick = function plusMinus() {
   operatorArray = [];
   numberArray = [];
   currentTotal = 0;
-  total = 0;
   arrayTotal = [];
   messageArray = [];
   memoryArray = [];
@@ -327,168 +325,20 @@ let arrayTotal = [];
 
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
 const equal = document.querySelector("#equal")
-equal.onclick = function operate() {
+equal.onclick = function () {
 
   numberArray.push(Number(currentNumber));
-
-  if (operatorArray.length == 1) {
-
-    // Add Operations
-    if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '+') {
-
-      // In the event it is our first operations - starting from zero
-      if (currentTotal == 0) {
-        total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] + numberArray.slice(numberArray
-          .length - 1, numberArray.length)[0];
-        currentTotal += total;
-        currentNumber = currentTotal.toString()
-        display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-          " + " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
-          .toString();
-
-      } else {
-        array = [];
-        array.push(currentTotal);
-        currentTotal = currentTotal + numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        currentNumber = currentTotal.toString()
-        display.textContent = array[0].toString() + " + " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString()
-      }
-    // Minus Operations
-    } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '-') {
-
-      // In the event it is our first operations - starting from zero
-      if (currentTotal == 0) {
-        total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] - numberArray.slice(numberArray
-          .length - 1, numberArray.length)[0];
-        currentTotal = total;
-        currentNumber = currentTotal.toString()
-        display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-          " - " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
-          .toString();
-      } else {
-        array = [];
-        array.push(currentTotal);
-        currentTotal = currentTotal - numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        currentNumber = currentTotal.toString()
-        display.textContent = array[0].toString() + " - " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString()
-      }
- 
-      // Multiplications Operations 
-    } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == 'x') {
-
-      // In the event it is our first operations - starting from zero
-      if (currentTotal == 0) {
-        total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] * numberArray.slice(numberArray
-          .length - 1, numberArray.length)[0];
-        currentTotal = total;
-        currentNumber = currentTotal.toString();
-        display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-          " x " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
-          .toString();
-      } else {
-        array = [];
-        array.push(currentTotal);
-        currentTotal = currentTotal * numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        currentNumber = currentTotal.toString();
-        display.textContent = array[0].toString() + " x " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString();
-      }
-
-      // Division Operations 
-    } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '/') {
-
-      // In the event it is our first operations - starting from zero
-      if (currentTotal == 0) {
-        total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] / numberArray.slice(numberArray
-          .length - 1, numberArray.length)[0];
-        
-        // Condition in the event we try to divide by zero
-        if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
-          display.textContent = "Error; division by zero is not possible";
-          display.style.fontSize = '24px';
-        } 
-        
-        else {
-          currentTotal = total;
-          currentNumber = currentTotal.toString();
-          display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-            " ÷ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
-            .toString();
-        }
-      } 
-      
-      else {
-        array = [];
-        array.push(currentTotal);
-        if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {
-          display.textContent = "Error; division by zero is not possible";
-          display.style.fontSize = '24px';
-
-        } else {
-          currentTotal = currentTotal / numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        }
-        if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] == 0) {}
-        currentNumber = currentTotal.toString()
-        display.textContent = array[0].toString() + " ÷ " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString()
-      }
-      // We push the total into our NumberArray
-      numberArray.push(currentTotal);
-
-    // Power Operations
-    } else if (operatorArray.slice(operatorArray.length - 1, operatorArray.length)[0] == '**') {
-
-      if (currentTotal == 0) {
-        total = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0] ** numberArray.slice(numberArray
-          .length - 1, numberArray.length)[0];
-        currentTotal = total;
-        currentNumber = currentTotal.toString()
-
-        display.textContent = numberArray.slice(numberArray.length - 2, numberArray.length - 1)[0].toString() +
-          " ^ " + numberArray.slice(numberArray.length - 1, numberArray.length)[0].toString() + " = " + currentTotal
-          .toString();
-      } else {
-        array = [];
-        array.push(currentTotal);
-        currentTotal = currentTotal ** numberArray.slice(numberArray.length - 1, numberArray.length)[0];
-        currentNumber = currentTotal.toString()
-        display.textContent = array[0].toString() + " ^ " + numberArray.slice(numberArray.length - 1, numberArray
-          .length)[0].toString() + " = " + currentTotal.toString()
-
-      }
-
-    } else {
-      return;
-    }
-
-    // We reset some arrays if the users want to make other calculations after he pushes on the equal buttons. 
-    operatorArray = [];
-    messageArray = [];
-    numberArray = [];
-    memoryArray.push(currentTotal);
-    currentNumber = currentTotal.toString()
-    currentTotal = 0;
-
-    if (currentNumber.length > 10) {
-      display.style.fontSize = '24px';
-    }
-
-
-  } else if (operatorArray.length > 1) {
-
-    convertOperatorToMaths(operatorArray, numberArray, arrayTotal)
-  }
+  operate(operatorArray, numberArray, arrayTotal)
 
   operatorArray = [];
   messageArray = [];
   numberArray = [];
-
+  arrayTotal = [];
+  currentTotal = 0;
 }
 
 // Function used to for calculations for more than one operators.
-function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
+function operate(operatorArray, numberArray, arrayTotal) {
 
   for (let i = 0; i < numberArray.length - 1; i++) {
     if (operatorArray.slice(i, i + 1) == "+") {
@@ -547,23 +397,10 @@ function convertOperatorToMaths(operatorArray, numberArray, arrayTotal) {
       0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
     currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
     memoryArray.push(currentNumber);
-    operatorArray = [];
-    numberArray = [];
-    currentTotal = 0;
-    total = 0;
-    arrayTotal = [];
-    messageArray = [];
-
 
   } else {
     display.textContent = "Error; division by zero is not possible";
     display.style.fontSize = '24px';
     currentNumber = "";
-    operatorArray = [];
-    numberArray = [];
-    currentTotal = 0;
-    total = 0;
-    arrayTotal = [];
-    messageArray = [];
   }
 }

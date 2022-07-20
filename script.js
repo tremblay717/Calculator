@@ -28,7 +28,7 @@ display.textContent = zeroTotal;
 const deleteOps = document.querySelector("#delete");
 deleteOps.onclick = function() {
 
-  if (display.textContent == currentTotal) {
+  if (display.textContent == currentTotal || memoryArray.length != 0) {
     return;
   } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "") ||

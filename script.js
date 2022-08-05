@@ -36,38 +36,32 @@ deleteOps.onclick = function() {
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == ""))) {
 
-      // Deleting previous inputs in these two arrays
-      operatorArray.pop();
-      messageArray.pop();
-      
-      currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
-      numberArray.pop();
-      display.textContent = messageArray.join(" ");
-      messageArray.pop();
+    // Deleting previous inputs in these two arrays
+    operatorArray.pop();
+    messageArray.pop();
 
-  } 
-  
-  else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
+    currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
+    numberArray.pop();
+    display.textContent = messageArray.join(" ");
+    messageArray.pop();
+
+  } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == "0"))) {
-        
-        // Deleting previous inputs in these two arrays
-        operatorArray.pop();
-        messageArray.pop();
-        currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
-        numberArray.pop();
-        display.textContent = messageArray.join(" ");
-        messageArray.pop();
-  } 
-  
-  else if (currentNumber.length > 1) {
+
+    // Deleting previous inputs in these two arrays
+    operatorArray.pop();
+    messageArray.pop();
+    currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
+    numberArray.pop();
+    display.textContent = messageArray.join(" ");
+    messageArray.pop();
+  } else if (currentNumber.length > 1) {
     currentNumber = currentNumber.slice(0, currentNumber.length - 1);
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } 
-  
-  else if (currentNumber.length <= 1) {
+  } else if (currentNumber.length <= 1) {
     currentNumber = "0";
     zeroTotal = "0";
     display.textContent = messageArray.join(" ") + " " + zeroTotal;
@@ -99,13 +93,13 @@ plusMinus.onclick = function() {
   } else if (currentNumber[0] == "0" & currentNumber.length == 1) {
     currentNumber = "0";
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } 
-  
+  }
+
   // Turning a positive number to a negative
   else if (currentNumber.includes("-") == false) {
     currentNumber = "-" + currentNumber;
     display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } 
+  }
   // Turning a negative number to a positive
   else if (currentNumber.includes("-") == true && currentNumber.length == 1) {
     currentNumber = "";
@@ -243,7 +237,7 @@ point.onclick = function() {
 // This function add the "+" operand to an operand Array
 const plus = document.querySelector("#plus");
 plus.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <=15) {
+  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -259,7 +253,7 @@ plus.onclick = function() {
 // This function adds the - operator
 const minus = document.querySelector("#minus");
 minus.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <=15) {
+  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -276,7 +270,7 @@ minus.onclick = function() {
 // This function adds the / operator
 const division = document.querySelector("#division");
 division.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <=15) {
+  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -290,7 +284,7 @@ division.onclick = function() {
 // This function adds the x operator
 const multiple = document.querySelector("#multiple");
 multiple.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <=15) {
+  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -307,7 +301,7 @@ multiple.onclick = function() {
 // This function adds the ** operator
 const exp = document.querySelector("#exp");
 exp.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <=15) {
+  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber)
@@ -320,12 +314,11 @@ exp.onclick = function() {
   }
 }
 
-
 let arrayTotal = [];
 
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
 const equal = document.querySelector("#equal")
-equal.onclick = function () {
+equal.onclick = function() {
 
   numberArray.push(Number(currentNumber));
   operate(operatorArray, numberArray, arrayTotal)
@@ -340,67 +333,73 @@ equal.onclick = function () {
 // Function used to for calculations for more than one operators.
 function operate(operatorArray, numberArray, arrayTotal) {
 
-  for (let i = 0; i < numberArray.length - 1; i++) {
-    if (operatorArray.slice(i, i + 1) == "+") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
+  if ((operatorArray.length < 1) || (numberArray.length < 1)) {
+    return;
+  } else {
 
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
-    } else if (operatorArray.slice(i, i + 1) == "-") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
-    } else if (operatorArray.slice(i, i + 1) == "/") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
+    for (let i = 0; i < numberArray.length - 1; i++) {
+      if (operatorArray.slice(i, i + 1) == "+") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
 
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
+        } else {
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+        }
+      } else if (operatorArray.slice(i, i + 1) == "-") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] - numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
+        } else {
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] - numberArray.slice(i + 1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+        }
+      } else if (operatorArray.slice(i, i + 1) == "/") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] / numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
+        } else {
 
-    } else if (operatorArray.slice(i, i + 1) == "x") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] * numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
-      }
-    } else if (operatorArray.slice(i, i + 1) == "**") {
-      if (arrayTotal.length == 0) {
-        let currentEquation = numberArray.slice(i, i + 1)[0] ** numberArray.slice(i + 1, i + 2)[0];
-        arrayTotal.push(currentEquation);
-      } else {
-        let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] ** numberArray.slice(i + 1,
-          i + 2)[0];
-        arrayTotal.push(currentEquation);
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] / numberArray.slice(i + 1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+        }
+
+      } else if (operatorArray.slice(i, i + 1) == "x") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
+        } else {
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] * numberArray.slice(i + 1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+        }
+      } else if (operatorArray.slice(i, i + 1) == "**") {
+        if (arrayTotal.length == 0) {
+          let currentEquation = numberArray.slice(i, i + 1)[0] ** numberArray.slice(i + 1, i + 2)[0];
+          arrayTotal.push(currentEquation);
+        } else {
+          let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] ** numberArray.slice(i +
+            1,
+            i + 2)[0];
+          arrayTotal.push(currentEquation);
+        }
       }
     }
-  }
 
-  if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] != 0) {
-    display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray.length)[
-      0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
-    currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
-    memoryArray.push(currentNumber);
-
-  } else {
-    display.textContent = "Error; division by zero is not possible";
-    display.style.fontSize = '24px';
-    currentNumber = "";
+    if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] != 0) {
+      display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray
+        .length)[
+        0] + " = " + arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0];
+      currentNumber = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0].toString()
+      memoryArray.push(currentNumber);
+    } else {
+      display.textContent = "Error; division by zero is not possible";
+      display.style.fontSize = '24px';
+      currentNumber = "";
+    }
   }
 }

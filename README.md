@@ -1,6 +1,6 @@
 <h1>Calculator Project</h1>
 This is a small project from the Odin Project Foundations Path Curriculum
-Basic calculator that contains JavaScript functions for all of the basic math operators you typically find on simple calculators,
+Basic calculator that contains JavaScript functions for all of the basic math operators you typically find on simple calculators:
 <ul>
 <li>add</li>
 <li>subtract</li>

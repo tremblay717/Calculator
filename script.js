@@ -1,21 +1,10 @@
-// Start by displaying the zero number on our calculator screen
-zeroTotal = "0";
+zeroTotal = "0";// Start by displaying the zero number on our calculator screen
 currentTotal = 0;
-
-// Array that stores our converted number strings to number type. 
-numberArray = [];
-
-//Used to store a previous total and force the user to either delete it or start from it when starting a new calculation
-let memoryArray = [];
-
-// To store our operators
-let operatorArray = [];
-
-//Display Message Array
-let messageArray = [];
-
-// When pressing a button number, we define this number as a string
-let currentNumber = "";
+numberArray = []; // Array that stores our converted number strings to number type. 
+let memoryArray = []; //Used to store a previous total and force the user to either delete it or start from it when starting a new calculation
+let operatorArray = []; // To store our operators
+let messageArray = []; //Display Message Array
+let currentNumber = ""; // When pressing a button number, we define this number as a string
 
 // display is the variable that we use to display our calculations on the calculator screen. 
 const display = document.querySelector("#numDisplay");
@@ -26,7 +15,6 @@ display.textContent = zeroTotal;
 // Event Listener used in case a user wants to delete the previous number entered. 
 const deleteOps = document.querySelector("#delete");
 deleteOps.onclick = function () {
-
   if (display.textContent == currentTotal || memoryArray.length != 0) {
     return;
   } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "") ||
@@ -34,22 +22,18 @@ deleteOps.onclick = function () {
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == ""))) {
-
     // Deleting previous inputs in these two arrays
     operatorArray.pop();
     messageArray.pop();
-
     currentNumber = numberArray.slice(numberArray.length - 1, numberArray.length).toString();
     numberArray.pop();
     display.textContent = messageArray.join(" ");
     messageArray.pop();
-
   } else if (((messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "+" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "-" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "x" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "÷" && currentNumber == "0") ||
       (messageArray.slice(messageArray.length - 1, messageArray.length)[0] == "^" && currentNumber == "0"))) {
-
     // Deleting previous inputs in these two arrays
     operatorArray.pop();
     messageArray.pop();
@@ -145,9 +129,7 @@ point.onclick = function () {
 }
 
 function operator(choice) {
-
   if (currentNumber != "" && operatorArray.length <= 15) {
-
     memoryArray = [];
     numberArray.push(Number(currentNumber));
     messageArray.push(currentNumber);
@@ -184,10 +166,8 @@ let arrayTotal = [];
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
 const equal = document.querySelector("#equal")
 equal.onclick = function () {
-
   numberArray.push(Number(currentNumber));
   operate(operatorArray, numberArray, arrayTotal);
-
   operatorArray = [];
   messageArray = [];
   numberArray = [];
@@ -197,17 +177,14 @@ equal.onclick = function () {
 
 // Function used to for calculations for more than one operators.
 function operate(operatorArray, numberArray, arrayTotal) {
-
   if ((operatorArray.length < 1) || (numberArray.length < 1)) {
     return;
   } else {
-
     for (let i = 0; i < numberArray.length - 1; i++) {
       if (operatorArray.slice(i, i + 1) == "+") {
         if (arrayTotal.length == 0) {
           let currentEquation = numberArray.slice(i, i + 1)[0] + numberArray.slice(i + 1, i + 2)[0];
           arrayTotal.push(currentEquation);
-
         } else {
           let currentEquation = arrayTotal.slice(arrayTotal.length - 1, arrayTotal.length)[0] + numberArray.slice(i + 1,
             i + 2)[0];
@@ -232,7 +209,6 @@ function operate(operatorArray, numberArray, arrayTotal) {
             i + 2)[0];
           arrayTotal.push(currentEquation);
         }
-
       } else if (operatorArray.slice(i, i + 1) == "x") {
         if (arrayTotal.length == 0) {
           let currentEquation = numberArray.slice(i, i + 1)[0] * numberArray.slice(i + 1, i + 2)[0];
@@ -254,7 +230,6 @@ function operate(operatorArray, numberArray, arrayTotal) {
         }
       }
     }
-
     if (numberArray.slice(numberArray.length - 1, numberArray.length)[0] != 0) {
       display.textContent = messageArray.join(" ") + " " + numberArray.slice(numberArray.length - 1, numberArray
         .length)[

@@ -125,104 +125,15 @@ perc.onclick = function() {
   }
 }
 
-// We have nine event listeners for the numbers on our numpad. Each event (+, -, *, /, **) will concatenate a string and that will 
-// be converted into a Number in a designated array. 
-
-const nine = document.querySelector("#nine")
-nine.onclick = function() {
+function number(x){
   if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "9";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-const eight = document.querySelector("#eight");
-eight.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "8";
+    currentNumber += x;
     display.textContent = messageArray.join(" ") + " " + currentNumber;
   } else {
     return;
   }
 }
 
-const seven = document.querySelector("#seven");
-seven.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "7";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-const six = document.querySelector("#six");
-six.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "6";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-
-five.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "5";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-
-const four = document.querySelector("#four");
-four.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "4";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-
-const three = document.querySelector("#three");
-three.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "3";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-const two = document.querySelector("#two");
-two.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "2";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
-
-const one = document.querySelector("#one");
-one.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "1";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;;
-  } else {
-    return;
-  }
-}
-
-const zero = document.querySelector("#zero");
-zero.onclick = function() {
-  if (currentNumber.length <= 10 && memoryArray.length == 0) {
-    currentNumber += "0";
-    display.textContent = messageArray.join(" ") + " " + currentNumber;
-  } else {
-    return;
-  }
-}
 // This function creates a decimal number
 const point = document.querySelector("#point");
 point.onclick = function() {
@@ -266,7 +177,6 @@ minus.onclick = function() {
   }
 }
 
-
 // This function adds the / operator
 const division = document.querySelector("#division");
 division.onclick = function() {
@@ -296,7 +206,6 @@ multiple.onclick = function() {
     return;
   }
 }
-
 
 // This function adds the ** operator
 const exp = document.querySelector("#exp");

@@ -17,7 +17,6 @@ let messageArray = [];
 // When pressing a button number, we define this number as a string
 let currentNumber = "";
 
-
 // display is the variable that we use to display our calculations on the calculator screen. 
 const display = document.querySelector("#numDisplay");
 display.classList.add('content');
@@ -26,7 +25,7 @@ display.textContent = zeroTotal;
 
 // Event Listener used in case a user wants to delete the previous number entered. 
 const deleteOps = document.querySelector("#delete");
-deleteOps.onclick = function() {
+deleteOps.onclick = function () {
 
   if (display.textContent == currentTotal || memoryArray.length != 0) {
     return;
@@ -84,7 +83,7 @@ clear.onclick = function plusMinus() {
 
 // This functions allows the user to convert a positive number to a negative number and vice versa 
 const plusMinus = document.querySelector("#plusMoins");
-plusMinus.onclick = function() {
+plusMinus.onclick = function () {
 
   // Preventing user to input a negative zero
   if (display.textContent == zeroTotal) {
@@ -115,7 +114,7 @@ plusMinus.onclick = function() {
 
 // converts a number to the percentage format
 const perc = document.querySelector("#perc");
-perc.onclick = function() {
+perc.onclick = function () {
   var percNumber = Number(currentNumber) * 100;
   if (percNumber % 1 == 0) {
     display.textContent = percNumber.toString() + "%";
@@ -125,7 +124,7 @@ perc.onclick = function() {
   }
 }
 
-function number(x){
+function number(x) {
   if (currentNumber.length <= 10 && memoryArray.length == 0) {
     currentNumber += x;
     display.textContent = messageArray.join(" ") + " " + currentNumber;
@@ -136,7 +135,7 @@ function number(x){
 
 // This function creates a decimal number
 const point = document.querySelector("#point");
-point.onclick = function() {
+point.onclick = function () {
   if (currentNumber.includes(".")) {
     display.textContent = currentNumber;
   } else {
@@ -145,81 +144,38 @@ point.onclick = function() {
   }
 }
 
-// This function add the "+" operand to an operand Array
-const plus = document.querySelector("#plus");
-plus.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <= 15) {
-    memoryArray = [];
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("+");
-    messageArray.push("+")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-  } else {
-    return;
-  }
-}
+function operator(choice) {
 
-// This function adds the - operator
-const minus = document.querySelector("#minus");
-minus.onclick = function() {
   if (currentNumber != "" && operatorArray.length <= 15) {
-    memoryArray = [];
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("-");
-    messageArray.push("-")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-  } else {
-    return;
-  }
-}
 
-// This function adds the / operator
-const division = document.querySelector("#division");
-division.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <= 15) {
     memoryArray = [];
     numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("/");
-    messageArray.push("÷")
+    messageArray.push(currentNumber);
+    
+    switch (choice) {
+      case '+':
+        operatorArray.push("+");
+        messageArray.push("+");
+        break;
+      case '-':
+        operatorArray.push("-");
+        messageArray.push("-");
+        break;
+      case '*':
+        operatorArray.push("x");
+        messageArray.push("x");
+        break;
+      case '/':
+        operatorArray.push("/");
+        messageArray.push("÷")
+        break;
+      case '**':
+        operatorArray.push("**");
+        messageArray.push("^")
+        break;
+    }
     display.textContent = messageArray.join(" ");
     currentNumber = "";
-  } else {}
-}
-
-// This function adds the x operator
-const multiple = document.querySelector("#multiple");
-multiple.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <= 15) {
-    memoryArray = [];
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("x");
-    messageArray.push("x")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-  } else {
-    return;
-  }
-}
-
-// This function adds the ** operator
-const exp = document.querySelector("#exp");
-exp.onclick = function() {
-  if (currentNumber != "" && operatorArray.length <= 15) {
-    memoryArray = [];
-    numberArray.push(Number(currentNumber));
-    messageArray.push(currentNumber)
-    operatorArray.push("**");
-    messageArray.push("^")
-    display.textContent = messageArray.join(" ");
-    currentNumber = "";
-  } else {
-    return;
   }
 }
 
@@ -227,10 +183,10 @@ let arrayTotal = [];
 
 //The operate function will proceed all 5 type of math operations : Sums, subtractions, multiplications, divisions and powers. 
 const equal = document.querySelector("#equal")
-equal.onclick = function() {
+equal.onclick = function () {
 
   numberArray.push(Number(currentNumber));
-  operate(operatorArray, numberArray, arrayTotal)
+  operate(operatorArray, numberArray, arrayTotal);
 
   operatorArray = [];
   messageArray = [];
